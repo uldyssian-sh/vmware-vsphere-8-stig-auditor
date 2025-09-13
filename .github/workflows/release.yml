@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      
+      - name: Create Release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          body: |
+            ## What's Changed
+            - Enhanced STIG compliance auditing
+            - Docker containerization support
+            - Enterprise automation features
+            - Comprehensive documentation updates
+            
+            ## Docker Usage
+            ```bash
+            docker run ghcr.io/uldyssian-sh/vsphere8-stig-auditor:${{ github.ref_name }} -VCenter "vcenter.company.com"
+            ```
+            
+            See [CHANGELOG.md](CHANGELOG.md) for detailed changes.
+          draft: false
+          prerelease: false

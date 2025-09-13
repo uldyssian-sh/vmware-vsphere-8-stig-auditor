@@ -11,7 +11,7 @@
 
 A comprehensive **read-only PowerCLI auditor** for VMware vSphere 8 environments against **DISA STIG security controls**. This tool performs non-intrusive compliance checks and generates detailed reports without making any configuration changes.
 
-> **Author**: uldyssian-sh (LT) · **Version**: 1.0 · **License**: MIT
+> **Author**: LT - [GitHub Profile](https://github.com/uldyssian-sh) · **Version**: 1.0 · **License**: MIT
 
 ---
 

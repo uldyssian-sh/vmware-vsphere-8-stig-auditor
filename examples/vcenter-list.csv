@@ -1,0 +1,4 @@
+VCenter,Username,Description
+vcenter-prod.company.com,auditor@vsphere.local,Production Environment
+vcenter-dev.company.com,auditor@vsphere.local,Development Environment
+vcenter-test.company.com,auditor@vsphere.local,Test Environment

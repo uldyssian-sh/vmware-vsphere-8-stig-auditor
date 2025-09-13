@@ -4,7 +4,10 @@
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%20%7C%207%2B-blue)](https://github.com/PowerShell/PowerShell)
 [![VMware](https://img.shields.io/badge/VMware-vSphere%208-orange)](https://www.vmware.com/products/vsphere.html)
 [![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions/workflows/ci.yml/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions/workflows/ci.yml)
+[![Docker](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions/workflows/docker.yml/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions/workflows/docker.yml)
 [![STIG](https://img.shields.io/badge/DISA-STIG%20Compliant-green)](https://public.cyber.mil/stigs/)
+[![Release](https://img.shields.io/github/v/release/uldyssian-sh/vsphere8-stig-auditor)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/releases)
+[![Downloads](https://img.shields.io/github/downloads/uldyssian-sh/vsphere8-stig-auditor/total)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/releases)
 
 A comprehensive **read-only PowerCLI auditor** for VMware vSphere 8 environments against **DISA STIG security controls**. This tool performs non-intrusive compliance checks and generates detailed reports without making any configuration changes.
 
@@ -55,6 +58,9 @@ $cred = Get-Credential
 
 # Skip vCenter checks (ESXi only)
 .\vsphere8-stig-auditor.ps1 -VCenter "vcenter.company.com" -SkipVCenterChecks
+
+# Docker usage
+docker run ghcr.io/uldyssian-sh/vsphere8-stig-auditor:latest -VCenter "vcenter.company.com"
 ```
 
 ---

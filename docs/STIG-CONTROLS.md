@@ -5,8 +5,8 @@ This document provides detailed information about the DISA STIG controls impleme
 ## ESXi Host Controls
 
 ### ESXI-80-000008 - Lockdown Mode
-**Severity**: High  
-**Category**: Access Control  
+**Severity**: High
+**Category**: Access Control
 **Description**: ESXi must enable lockdown mode to restrict access to the host.
 
 **STIG Requirement**: Lockdown mode must be enabled (Normal or Strict)
@@ -22,8 +22,8 @@ $lockdown.ChangeLockdownMode("lockdownNormal")
 ```
 
 ### ESXI-80-000193 - SSH Service
-**Severity**: Medium  
-**Category**: Remote Access  
+**Severity**: Medium
+**Category**: Remote Access
 **Description**: ESXi must disable SSH to prevent unauthorized access.
 
 **STIG Requirement**: SSH service must be stopped and not set to start automatically
@@ -33,14 +33,14 @@ $lockdown.ChangeLockdownMode("lockdownNormal")
 **Remediation**:
 ```powershell
 # Stop SSH service and set to manual startup
-Get-VMHost | Get-VMHostService | Where-Object {$_.Key -eq "TSM-SSH"} | 
-    Stop-VMHostService -Confirm:$false | 
+Get-VMHost | Get-VMHostService | Where-Object {$_.Key -eq "TSM-SSH"} |
+    Stop-VMHostService -Confirm:$false |
     Set-VMHostService -Policy "off"
 ```
 
 ### ESXI-80-000124 - Time Synchronization
-**Severity**: Medium  
-**Category**: Time Management  
+**Severity**: Medium
+**Category**: Time Management
 **Description**: ESXi must be configured with authoritative time sources.
 
 **STIG Requirement**: NTP or PTP must be configured with authoritative time sources
@@ -51,14 +51,14 @@ Get-VMHost | Get-VMHostService | Where-Object {$_.Key -eq "TSM-SSH"} |
 ```powershell
 # Configure NTP servers
 Add-VMHostNtpServer -VMHost $vmhost -NtpServer "pool.ntp.org"
-Get-VMHostService -VMHost $vmhost | Where-Object {$_.Key -eq "ntpd"} | 
-    Start-VMHostService | 
+Get-VMHostService -VMHost $vmhost | Where-Object {$_.Key -eq "ntpd"} |
+    Start-VMHostService |
     Set-VMHostService -Policy "on"
 ```
 
 ### ESXI-80-000114 - Remote Syslog
-**Severity**: Medium  
-**Category**: Logging  
+**Severity**: Medium
+**Category**: Logging
 **Description**: ESXi must send logs to a central log server.
 
 **STIG Requirement**: Remote syslog target must be configured
@@ -68,13 +68,13 @@ Get-VMHostService -VMHost $vmhost | Where-Object {$_.Key -eq "ntpd"} |
 **Remediation**:
 ```powershell
 # Configure remote syslog
-Get-VMHost | Get-AdvancedSetting -Name "Syslog.global.logHost" | 
+Get-VMHost | Get-AdvancedSetting -Name "Syslog.global.logHost" |
     Set-AdvancedSetting -Value "udp://syslog.company.com:514" -Confirm:$false
 ```
 
 ### ESXI-80-000195 - Shell Auto-Stop Timeout
-**Severity**: Medium  
-**Category**: Shell Security  
+**Severity**: Medium
+**Category**: Shell Security
 **Description**: ESXi shell must automatically terminate after timeout.
 
 **STIG Requirement**: ESXiShellTimeOut must be ≤ 600 seconds and not 0
@@ -84,13 +84,13 @@ Get-VMHost | Get-AdvancedSetting -Name "Syslog.global.logHost" |
 **Remediation**:
 ```powershell
 # Set shell timeout to 10 minutes
-Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellTimeOut" | 
+Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellTimeOut" |
     Set-AdvancedSetting -Value 600 -Confirm:$false
 ```
 
 ### ESXI-80-000068 - Shell Interactive Timeout
-**Severity**: Medium  
-**Category**: Shell Security  
+**Severity**: Medium
+**Category**: Shell Security
 **Description**: ESXi shell must timeout idle interactive sessions.
 
 **STIG Requirement**: ESXiShellInteractiveTimeOut must be ≤ 900 seconds and not 0
@@ -100,13 +100,13 @@ Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellTimeOut" |
 **Remediation**:
 ```powershell
 # Set interactive timeout to 15 minutes
-Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellInteractiveTimeOut" | 
+Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellInteractiveTimeOut" |
     Set-AdvancedSetting -Value 900 -Confirm:$false
 ```
 
 ### ESXI-80-000196 - DCUI Timeout
-**Severity**: Medium  
-**Category**: Console Access  
+**Severity**: Medium
+**Category**: Console Access
 **Description**: ESXi DCUI must timeout idle sessions.
 
 **STIG Requirement**: DcuiTimeOut must be ≤ 600 seconds and not 0
@@ -116,13 +116,13 @@ Get-VMHost | Get-AdvancedSetting -Name "UserVars.ESXiShellInteractiveTimeOut" |
 **Remediation**:
 ```powershell
 # Set DCUI timeout to 10 minutes
-Get-VMHost | Get-AdvancedSetting -Name "UserVars.DcuiTimeOut" | 
+Get-VMHost | Get-AdvancedSetting -Name "UserVars.DcuiTimeOut" |
     Set-AdvancedSetting -Value 600 -Confirm:$false
 ```
 
 ### ESXI-80-000005 - Account Lockout Threshold
-**Severity**: Medium  
-**Category**: Account Security  
+**Severity**: Medium
+**Category**: Account Security
 **Description**: ESXi must enforce account lockout policy.
 
 **STIG Requirement**: Security.AccountLockFailures must equal 3
@@ -132,13 +132,13 @@ Get-VMHost | Get-AdvancedSetting -Name "UserVars.DcuiTimeOut" |
 **Remediation**:
 ```powershell
 # Set account lockout threshold
-Get-VMHost | Get-AdvancedSetting -Name "Security.AccountLockFailures" | 
+Get-VMHost | Get-AdvancedSetting -Name "Security.AccountLockFailures" |
     Set-AdvancedSetting -Value 3 -Confirm:$false
 ```
 
 ### ESXI-80-000111 - Account Unlock Timeout
-**Severity**: Medium  
-**Category**: Account Security  
+**Severity**: Medium
+**Category**: Account Security
 **Description**: ESXi must enforce account unlock timeout.
 
 **STIG Requirement**: Security.AccountUnlockTime must equal 900 seconds
@@ -148,13 +148,13 @@ Get-VMHost | Get-AdvancedSetting -Name "Security.AccountLockFailures" |
 **Remediation**:
 ```powershell
 # Set account unlock timeout
-Get-VMHost | Get-AdvancedSetting -Name "Security.AccountUnlockTime" | 
+Get-VMHost | Get-AdvancedSetting -Name "Security.AccountUnlockTime" |
     Set-AdvancedSetting -Value 900 -Confirm:$false
 ```
 
 ### ESXI-80-000035 - Password Quality
-**Severity**: Medium  
-**Category**: Password Security  
+**Severity**: Medium
+**Category**: Password Security
 **Description**: ESXi must enforce password complexity requirements.
 
 **STIG Requirement**: Security.PasswordQualityControl must be configured
@@ -165,32 +165,32 @@ Get-VMHost | Get-AdvancedSetting -Name "Security.AccountUnlockTime" |
 ```powershell
 # Set password quality control
 $policy = "similar=deny retry=3 min=disabled,disabled,disabled,disabled,15"
-Get-VMHost | Get-AdvancedSetting -Name "Security.PasswordQualityControl" | 
+Get-VMHost | Get-AdvancedSetting -Name "Security.PasswordQualityControl" |
     Set-AdvancedSetting -Value $policy -Confirm:$false
 ```
 
 ### ESXI-80-000216/217/218 - vSwitch Security
-**Severity**: Medium  
-**Category**: Network Security  
+**Severity**: Medium
+**Category**: Network Security
 **Description**: ESXi vSwitch security policies must be configured properly.
 
 **STIG Requirements**:
 - **216**: Forged Transmits = Reject
-- **217**: MAC Address Changes = Reject  
+- **217**: MAC Address Changes = Reject
 - **218**: Promiscuous Mode = Reject
 
 **Remediation**:
 ```powershell
 # Configure vSwitch security policies
-Get-VirtualSwitch | Get-SecurityPolicy | 
+Get-VirtualSwitch | Get-SecurityPolicy |
     Set-SecurityPolicy -ForgedTransmits $false -MacChanges $false -AllowPromiscuous $false
 ```
 
 ## vCenter Server Controls
 
 ### VCSA-80-000089 - Session Timeout
-**Severity**: Medium  
-**Category**: Session Management  
+**Severity**: Medium
+**Category**: Session Management
 **Description**: vCenter must enforce session timeout limits.
 
 **STIG Requirement**: Session timeout must be ≤ 15 minutes
@@ -207,8 +207,8 @@ Get-VirtualSwitch | Get-SecurityPolicy |
 ## Virtual Machine Controls
 
 ### VMCH-80-000210 - CD/DVD Management
-**Severity**: Low  
-**Category**: Device Control  
+**Severity**: Low
+**Category**: Device Control
 **Description**: Virtual machines must not have unnecessary CD/DVD devices.
 
 **STIG Requirement**: CD/DVD devices must be disconnected and not connect at power on
@@ -218,13 +218,13 @@ Get-VirtualSwitch | Get-SecurityPolicy |
 **Remediation**:
 ```powershell
 # Disconnect CD/DVD drives
-Get-VM | Get-CDDrive | 
+Get-VM | Get-CDDrive |
     Set-CDDrive -NoMedia -StartConnected:$false -Confirm:$false
 ```
 
 ### VMCH-80-000197 - Device Connection Control
-**Severity**: Medium  
-**Category**: Device Security  
+**Severity**: Medium
+**Category**: Device Security
 **Description**: Virtual machines must prevent unauthorized device connections.
 
 **STIG Requirement**: isolation.device.connectable.disable must be true

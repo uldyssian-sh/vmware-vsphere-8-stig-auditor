@@ -9,7 +9,8 @@
 [![Release](https://img.shields.io/github/v/release/uldyssian-sh/vsphere8-stig-auditor)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/releases)
 [![Downloads](https://img.shields.io/github/downloads/uldyssian-sh/vsphere8-stig-auditor/total)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/releases)
 
-A comprehensive **read-only PowerCLI auditor** for VMware vSphere 8 environments against **DISA STIG security controls**. This tool performs non-intrusive compliance checks and generates detailed reports without making any configuration changes.
+A comprehensive **read-only PowerCLI auditor** for VMware vSphere 8 environments against **DISA STIG security controls**.
+This tool performs non-intrusive compliance checks and generates detailed reports without making any configuration changes.
 
 ## 🏗️ Architecture
 
@@ -214,9 +215,12 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## ⚠️ Disclaimer
 
-This script is provided "as is" without warranty of any kind. Use at your own risk. You are solely responsible for reviewing, testing, and implementing it in your environment.
+This script is provided "as is" without warranty of any kind.
+Use at your own risk.
+You are solely responsible for reviewing, testing, and implementing it in your environment.
 
-This tool is not officially endorsed by DISA or VMware. STIG compliance requirements may change - always refer to the latest official DISA STIG documentation.
+This tool is not officially endorsed by DISA or VMware.
+STIG compliance requirements may change - always refer to the latest official DISA STIG documentation.
 
 ---
 

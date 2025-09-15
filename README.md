@@ -194,6 +194,15 @@ Minimum required permissions for auditing:
 - **Host** > **Configuration.View** (for ESXi settings)
 - **Virtual Machine** > **Configuration.View** (for VM settings)
 
+## 🤖 AI Development Support
+
+This repository is optimized for AI-assisted development:
+- **Amazon Q Developer**: Enhanced AWS and cloud development assistance
+- **GitHub Copilot**: Code completion and suggestions
+- **AI-friendly documentation**: Clear structure for better AI understanding
+
+See [AMAZON_Q_INTEGRATION.md](AMAZON_Q_INTEGRATION.md) for detailed setup and usage.
+
 ### Supported Versions
 - **VMware vSphere 8.0** and later
 - **VMware ESXi 8.0** and later
@@ -259,6 +268,15 @@ We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.
 - How to propose changes
 - Code style guidelines
 - Review process
+
+## 🤖 AI Development Support
+
+This repository is optimized for AI-assisted development:
+- **Amazon Q Developer**: Enhanced AWS and cloud development assistance
+- **GitHub Copilot**: Code completion and suggestions
+- **AI-friendly documentation**: Clear structure for better AI understanding
+
+See [AMAZON_Q_INTEGRATION.md](AMAZON_Q_INTEGRATION.md) for detailed setup and usage.
 
 ## Support
 

@@ -1,185 +1,166 @@
-# vsphere8 stig auditor
+# vSphere 8 STIG Auditor
 
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub issues](https://img.shields.io/github/issues/uldyssian-sh/vsphere8-stig-auditor)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/issues)
-[![GitHub stars](https://img.shields.io/github/stars/uldyssian-sh/vsphere8-stig-auditor)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/stargazers)
-[![Security](https://img.shields.io/badge/Security-Enterprise-blue.svg)](SECURITY.md)
+[![GitHub license](https://img.shields.io/github/license/uldyssian-sh/vsphere8-stig-auditor)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/blob/main/LICENSE)
+[![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
 
-## 🎯 Overview
+## 🚀 Overview
 
-Professional vsphere8 stig auditor solution with enterprise-grade automation and security features.
+VMware vSphere 8 Security Technical Implementation Guide (STIG) compliance auditor. Automated assessment and remediation tool for DoD STIG requirements on vSphere 8 environments.
 
-## 📊 Repository Stats
-
-- **Files:**       32
-- **Technologies:** PowerShell YAML Docker
-- **Type:** Infrastructure Automation
-- **Status:** Production Ready
+**Technology Stack:** PowerCLI, PowerShell, vSphere API, STIG Controls
 
 ## ✨ Features
 
-- 🏗️ **Enterprise Architecture** - Production-ready infrastructure
-- 🔒 **Zero-Trust Security** - Comprehensive security controls
-- 🚀 **CI/CD Automation** - Automated deployment pipelines
-- 📊 **Monitoring & Observability** - Complete visibility
-- 🤖 **AI Integration** - GitHub Copilot & Amazon Q
-- 🔄 **Self-Healing** - Automatic error recovery
-- 📈 **Performance Optimized** - High-performance configurations
-- 🛡️ **Compliance Ready** - SOC2, GDPR, HIPAA standards
+- 🔒 **STIG Compliance Assessment** - Automated STIG validation
+- 📋 **DoD Requirements** - Complete STIG control coverage
+- 🔧 **Automated Remediation** - Fix non-compliant configurations
+- 📊 **Compliance Reporting** - Detailed STIG compliance reports
+- 🎯 **Risk Assessment** - Security risk categorization
+- 📈 **Continuous Monitoring** - Ongoing compliance validation
+
+## 🛠️ Prerequisites
+
+- PowerCLI 13.0+
+- PowerShell 7.0+
+- vCenter Server 8.0+
+- Administrative access to vSphere environment
+- STIG benchmark documentation
 
 ## 🚀 Quick Start
 
-```bash
+```powershell
 # Clone repository
 git clone https://github.com/uldyssian-sh/vsphere8-stig-auditor.git
 cd vsphere8-stig-auditor
 
-# Setup environment
-chmod +x setup.sh
-./setup.sh
+# Import required modules
+Import-Module VMware.PowerCLI
+Import-Module .\modules\STIGAuditor.psm1
+
+# Connect to vCenter
+Connect-VIServer -Server vcenter.domain.com
+
+# Run STIG assessment
+Invoke-STIGAssessment -Target "vcenter.domain.com" -OutputPath "C:\Reports\"
+
+# Generate compliance report
+New-STIGComplianceReport -AssessmentPath "C:\Reports\" -Format HTML
 ```
 
+## 📋 STIG Categories
 
-## ⚡ PowerShell Scripts
+### Category I (High Risk)
+- Authentication and access control
+- Encryption requirements
+- Network security controls
+- Audit and logging
+- System integrity
+
+### Category II (Medium Risk)
+- Configuration management
+- User account management
+- Service configuration
+- Resource management
+- Monitoring controls
+
+### Category III (Low Risk)
+- Documentation requirements
+- Informational controls
+- Best practice recommendations
+- Operational procedures
+- Training requirements
+
+## 🔧 Available Cmdlets
+
+| Cmdlet | Description |
+|--------|-------------|
+| `Invoke-STIGAssessment` | Run complete STIG assessment |
+| `Test-STIGControl` | Test individual STIG control |
+| `Set-STIGCompliance` | Apply STIG remediation |
+| `Get-STIGReport` | Generate compliance reports |
+| `Export-STIGResults` | Export assessment results |
+
+## 📊 Assessment Examples
+
+### Full Environment Assessment
+```powershell
+# Assess entire vSphere environment
+Invoke-STIGAssessment -Target "vcenter.domain.com" -Scope "Environment" -Detailed
+
+# Assess specific cluster
+Invoke-STIGAssessment -Target "Production-Cluster" -Scope "Cluster"
+
+# Assess ESXi hosts
+Invoke-STIGAssessment -Target "esxi-host.domain.com" -Scope "Host"
+```
+
+### Specific Control Testing
+```powershell
+# Test authentication controls
+Test-STIGControl -Category "Authentication" -Severity "CAT-I"
+
+# Test network security
+Test-STIGControl -Category "Network" -Control "ESXI-80-000001"
+
+# Test logging configuration
+Test-STIGControl -Category "Logging" -Detailed
+```
+
+## 🔒 STIG Controls Coverage
+
+### vCenter Server Controls
+- User authentication and authorization
+- Certificate management
+- Network configuration
+- Logging and auditing
+- Service configuration
+
+### ESXi Host Controls
+- Host security configuration
+- Network isolation
+- Storage security
+- VM security settings
+- Hypervisor hardening
+
+### Virtual Machine Controls
+- VM configuration security
+- Guest OS hardening
+- Network security
+- Storage encryption
+- Access controls
+
+## 📈 Compliance Reporting
 
 ```powershell
-# Set execution policy
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+# Generate executive summary
+New-STIGExecutiveSummary -AssessmentData $results -OutputPath "C:\Reports\"
 
-# Run main script
-.\main.ps1
+# Create detailed findings report
+New-STIGFindingsReport -Results $results -IncludeRemediation -Format PDF
+
+# Export to SCAP format
+Export-STIGToSCAP -Results $results -OutputPath "C:\SCAP\"
 ```
 
+## 🎯 Remediation
+
+- Automated fix implementation
+- Manual remediation guidance
+- Risk-based prioritization
+- Change impact analysis
+- Rollback procedures
 
 ## 📚 Documentation
 
-- [Installation Guide](docs/INSTALLATION.md)
-- [Configuration Reference](docs/CONFIGURATION.md)
-- [API Documentation](docs/API.md)
-- [Troubleshooting](docs/TROUBLESHOOTING.md)
-- [Security Policy](SECURITY.md)
+- [STIG Implementation Guide](docs/stig-implementation.md)
+- [Control Mapping](docs/control-mapping.md)
+- [Remediation Procedures](docs/remediation.md)
+- [Troubleshooting](docs/troubleshooting.md)
 
 ## 🤝 Contributing
 
-We welcome contributions! Please see [CONTRIBUTING.md](CONTRIBUTING.md) for guidelines.
+See [CONTRIBUTING.md](CONTRIBUTING.md) for contribution guidelines.
 
 ## 📄 License
 
-This project is licensed under the MIT License - see [LICENSE](LICENSE) file.
-
-## 🆘 Support
-
-- 🐛 **Issues**: [GitHub Issues](https://github.com/uldyssian-sh/vsphere8-stig-auditor/issues)
-- 📖 **Documentation**: [Wiki](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki)
-
----
-
-⭐ **Star this repository if you find it helpful!**
-# vSphere 8 STIG Auditor - Enterprise Security Compliance Suite
-
-## 🎯 Overview
-
-Comprehensive VMware vSphere 8 Security Technical Implementation Guide (STIG) compliance auditing and validation suite designed for enterprise security operations.
-
-## 🛡️ Core Security Modules
-
-### Infrastructure Security Auditing
-- **STIG Compliance Engine** - Automated STIG rule validation and scoring
-- **vCenter Server Auditing** - Configuration and security policy validation
-- **ESXi Host Security Scanning** - Host configuration and vulnerability assessment
-- **Virtual Machine Security Audit** - VM hardening and compliance checks
-- **Network Security Scanning** - vSwitch security and traffic isolation validation
-- **Storage Security Auditing** - Datastore encryption and access control verification
-
-### Access Control & Identity Management
-- **User Access Review** - Permission auditing and privilege escalation detection
-- **Certificate Management** - SSL/TLS certificate validation and PKI compliance
-- **Zero Trust Architecture Validation** - Micro-segmentation and identity-based access control
-
-### Compliance & Risk Management
-- **Patch Management Compliance** - Security patch validation and vulnerability tracking
-- **Logging and Audit Trail** - Log configuration and audit trail completeness validation
-- **Backup Security Validation** - Backup encryption and integrity verification
-- **Firewall Rule Auditing** - Distributed firewall and security rule compliance
-- **Encryption Validation** - Data-at-rest and in-transit encryption compliance
-
-### Advanced Security Features
-- **API Security Scanning** - REST API security and authentication validation
-- **Vulnerability Scanner** - CVE database integration and impact assessment
-- **Risk Assessment Engine** - Security risk scoring and threat analysis
-- **Continuous Security Monitoring** - Real-time compliance monitoring and drift detection
-- **Automated Security Remediation** - Self-healing configurations and compliance fixes
-
-### Enterprise Integration & Analytics
-- **Compliance Reporting** - Executive dashboards and detailed audit reports
-- **Integration Framework** - SIEM and third-party security tool connectivity
-- **Custom Rules Engine** - Custom compliance rule creation and enforcement
-- **Security Baseline Management** - Configuration templates and drift remediation
-- **Incident Response Integration** - Security incident detection and automated response
-
-### Advanced Analytics & Intelligence
-- **AI-Powered Security Analysis** - Machine learning threat detection and anomaly analysis
-- **Performance Impact Analysis** - Security control performance monitoring
-- **Multi-site Security Auditing** - Cross-datacenter compliance management
-- **Cloud Security Integration** - Hybrid cloud compliance and multi-cloud audit capabilities
-- **Mobile Security Dashboard** - Real-time mobile security monitoring
-
-## 📊 Repository Statistics
-
-- **Total Security Modules**: 30 enterprise-grade components
-- **Pull Requests**: 38+ merged successfully
-- **Verified Commits**: 60+ GPG-signed commits
-- **STIG Controls**: 200+ automated validation rules
-- **Compliance Frameworks**: STIG, NIST, CIS, SOC2, GDPR
-- **Security Coverage**: Comprehensive vSphere 8 security posture
-
-## 🔧 Technical Architecture
-
-- **PowerShell/PowerCLI** - Core automation and validation engine
-- **Python Integration** - Advanced analytics and machine learning
-- **REST API Framework** - Enterprise integration capabilities
-- **Real-time Monitoring** - Continuous compliance assessment
-- **Automated Workflows** - Self-healing and remediation
-- **Enterprise Ready** - Scalable, secure, and audit-ready
-
-## 🚀 Key Features
-
-- **Automated STIG Compliance** - Complete vSphere 8 STIG validation
-- **Real-time Security Monitoring** - Continuous compliance assessment
-- **Executive Reporting** - Compliance dashboards and audit reports
-- **Multi-tenant Support** - Enterprise-scale deployment capabilities
-- **Zero-trust Validation** - Modern security architecture compliance
-- **AI-powered Analytics** - Intelligent threat detection and analysis
-
-## 💰 Cost Optimization
-
-Designed for GitHub Free tier with efficient resource usage and enterprise-grade security capabilities.
-
-
-
-## 🎯 Advanced Security Auditing
-
-### STIG Compliance Engine
-- Automated Validation: 200+ STIG controls
-- Risk Assessment: Security scoring
-- Remediation Guidance: Step-by-step instructions
-- Compliance Reporting: Executive reports
-
-### Enterprise Security
-- Zero-Trust Validation: Micro-segmentation
-- Continuous Monitoring: Drift detection
-- AI-Powered Analysis: Threat detection
-- Multi-site Auditing: Cross-datacenter compliance
-
-## 📊 STIG Control Coverage
-- Access Control: 93% automated
-- Audit & Accountability: 92% automated
-- Configuration Management: 92% automated
-- System & Communications: 92% automated
-
-## 🚀 Quick Audit
-```powershell
-.\Initialize-STIGAuditor.ps1 -vCenter vcenter.domain.com
-.\Start-STIGAudit.ps1 -Scope All -OutputFormat HTML,JSON
-.\Generate-ComplianceReport.ps1 -Template Executive
-```
+MIT License - see [LICENSE](LICENSE) file for details.

@@ -127,4 +127,4 @@ Register-ScheduledTask -TaskName "Monthly-STIG-Audit" -Trigger (New-ScheduledTas
 ```
 
 ---
-**Maintained by**: [uldyssian-sh](https://github.com/uldyssian-sh) | **License**: MIT
+**Maintained by**: [uldyssian-sh](https://github.com/uldyssian-sh) | **License**: MIT<!-- Deployment trigger Wed Sep 17 22:41:05 CEST 2025 -->

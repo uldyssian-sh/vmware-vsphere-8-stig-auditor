@@ -17,61 +17,84 @@
 │  └─────────────┘    └─────────────┘    └─────────────┘     │
 └─────────────────────────────────────────────────────────────┘
 ```
-  
-  [![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
-  [![STIG Compliance](https://img.shields.io/badge/STIG-Compliant-green.svg)](https://public.cyber.mil/stigs/)
-  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+[![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
+[![Security](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/Security/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/security)
+[![STIG](https://img.shields.io/badge/STIG-Compliant-green.svg)](https://public.cyber.mil/stigs/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 </div>
 
-## 🛡️ Overview
+## 🛡️ Enterprise STIG Compliance Automation
 
-Automated STIG (Security Technical Implementation Guide) compliance auditor for VMware vSphere 8 environments. Ensures your infrastructure meets DoD security standards.
+Automated Security Technical Implementation Guide (STIG) compliance auditor for VMware vSphere 8 environments. Ensures DoD security standards compliance with comprehensive reporting and automated remediation capabilities.
 
-## 🎯 Features
+## 🎯 Core Features
 
-- **Automated STIG Checks**: 200+ security controls validation
-- **Compliance Reports**: Detailed HTML/PDF reports
-- **Remediation Scripts**: Auto-fix common violations
-- **Multi-Environment**: Dev, staging, production support
-- **API Integration**: REST API for CI/CD pipelines
+- **200+ STIG Controls**: Complete DoD security requirements coverage
+- **Real-time Auditing**: Continuous compliance monitoring
+- **Automated Remediation**: Smart fix deployment with rollback
+- **Executive Reporting**: C-level compliance dashboards
+- **Multi-Environment**: Production, staging, development support
+- **API Integration**: REST API for CI/CD pipeline integration
 
 ## 🚀 Quick Start
 
 ```bash
-# Install
-pip install vsphere8-stig-auditor
+# Install dependencies
+pip install -r requirements.txt
 
-# Configure
-export VCENTER_HOST="your-vcenter.domain.com"
+# Configure environment
+export VCENTER_HOST="vcenter.domain.com"
 export VCENTER_USER="administrator@vsphere.local"
 export VCENTER_PASS="your-password"
 
-# Run audit
-vsphere8-audit --full-scan --output-format html
+# Run full STIG audit
+python stig_auditor.py --full-audit --output-format html
+
+# Apply automated fixes
+python stig_auditor.py --remediate --category access_control
 ```
 
-## 📊 Compliance Dashboard
+## 📊 STIG Control Categories
 
-```
-┌─────────────────────────────────────────────────────────────┐
-│                 STIG Compliance Dashboard                   │
-├─────────────────────────────────────────────────────────────┤
-│ Control Categories    │ Status    │ Compliance │ Actions    │
-├─────────────────────────────────────────────────────────────┤
-│ Access Control        │    ✅     │    98%     │ 2 Issues   │
-│ System Settings       │    ✅     │   100%     │ Compliant  │
-│ Network Security      │    ⚠️     │    85%     │ 5 Issues   │
-│ Logging & Monitoring  │    ✅     │    95%     │ 1 Issue    │
-└─────────────────────────────────────────────────────────────┘
-```
+| Category | Controls | Automation | Priority |
+|----------|----------|------------|----------|
+| Access Control | 45 | Full | Critical |
+| System Settings | 38 | Full | High |
+| Network Security | 29 | Partial | High |
+| Logging & Monitoring | 22 | Full | Medium |
+| Backup & Recovery | 18 | Manual | Medium |
 
 ## 📚 Documentation
 
-- [Installation Guide](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Installation)
-- [Configuration Reference](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Configuration)
-- [STIG Controls Mapping](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/STIG-Controls)
-- [API Documentation](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/API)
+- **[Installation Guide](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Installation)** - Complete setup instructions
+- **[Configuration Reference](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Configuration)** - All configuration options
+- **[STIG Controls Mapping](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/STIG-Controls)** - Complete controls reference
+- **[API Documentation](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/API)** - REST API reference
+- **[Troubleshooting Guide](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Troubleshooting)** - Common issues and solutions
+
+## 🔗 Integration
+
+- **[Jenkins Integration](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Jenkins)** - Pipeline integration
+- **[GitLab CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/GitLab-CI)** - Automated compliance checks
+- **[Splunk](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Splunk)** - Log analysis and alerting
+- **[Grafana](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Grafana)** - Compliance dashboards
+
+## 🤝 Contributing
+
+1. **[Fork Repository](https://github.com/uldyssian-sh/vsphere8-stig-auditor/fork)** - Create your fork
+2. **[Create Branch](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Contributing#branches)** - Feature or bugfix branch
+3. **[Submit PR](https://github.com/uldyssian-sh/vsphere8-stig-auditor/pulls)** - Pull request with tests
+4. **[Code Review](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Contributing#review)** - Peer review process
 
 ## 📄 License
 
-MIT License - see [LICENSE](LICENSE) file for details.
+This project is licensed under the MIT License - see the **[LICENSE](https://github.com/uldyssian-sh/vsphere8-stig-auditor/blob/main/LICENSE)** file for details.
+
+## 🆘 Support
+
+- **[GitHub Issues](https://github.com/uldyssian-sh/vsphere8-stig-auditor/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/uldyssian-sh/vsphere8-stig-auditor/discussions)** - Community support and Q&A
+- **[Wiki](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki)** - Comprehensive documentation
+- **[Security Policy](https://github.com/uldyssian-sh/vsphere8-stig-auditor/security/policy)** - Vulnerability reporting

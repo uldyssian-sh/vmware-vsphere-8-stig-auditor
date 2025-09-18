@@ -40,20 +40,18 @@ Automated Security Technical Implementation Guide (STIG) compliance auditor for 
 
 ## 🚀 Quick Start
 
-```bash
-# Install dependencies
-pip install -r requirements.txt
+```powershell
+# Install PowerCLI
+Install-Module -Name VMware.PowerCLI -Force
 
-# Configure environment
-export VCENTER_HOST="vcenter.domain.com"
-export VCENTER_USER="administrator@vsphere.local"
-export VCENTER_PASS="your-password"
+# Connect to vCenter
+Connect-VIServer -Server vcenter.domain.com
 
-# Run full STIG audit
-python stig_auditor.py --full-audit --output-format html
+# Run STIG audit
+.\vsphere8-stig-auditor.ps1 -VCenter "vcenter.domain.com"
 
-# Apply automated fixes
-python stig_auditor.py --remediate --category access_control
+# Review results
+Get-Content .\audit-results.txt
 ```
 
 ## 📊 STIG Control Categories
@@ -68,25 +66,25 @@ python stig_auditor.py --remediate --category access_control
 
 ## 📚 Documentation
 
-- **[Installation Guide](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Installation)** - Complete setup instructions
-- **[Configuration Reference](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Configuration)** - All configuration options
-- **[STIG Controls Mapping](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/STIG-Controls)** - Complete controls reference
-- **[API Documentation](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/API)** - REST API reference
-- **[Troubleshooting Guide](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Troubleshooting)** - Common issues and solutions
+- **[Installation Guide](docs/INSTALLATION.md)** - Complete setup instructions
+- **[Configuration Reference](docs/CONFIGURATION.md)** - All configuration options
+- **[STIG Controls Mapping](docs/STIG-CONTROLS.md)** - Complete controls reference
+- **[API Documentation](docs/API.md)** - REST API reference
+- **[Troubleshooting Guide](docs/TROUBLESHOOTING.md)** - Common issues and solutions
 
 ## 🔗 Integration
 
-- **[Jenkins Integration](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Jenkins)** - Pipeline integration
-- **[GitLab CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/GitLab-CI)** - Automated compliance checks
-- **[Splunk](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Splunk)** - Log analysis and alerting
-- **[Grafana](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Grafana)** - Compliance dashboards
+- **PowerShell Module** - Direct PowerCLI integration
+- **CI/CD Pipeline** - Automated compliance checks
+- **Docker Support** - Containerized deployment
+- **REST API** - Programmatic access
 
 ## 🤝 Contributing
 
 1. **[Fork Repository](https://github.com/uldyssian-sh/vsphere8-stig-auditor/fork)** - Create your fork
-2. **[Create Branch](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Contributing#branches)** - Feature or bugfix branch
+2. **[Contributing Guide](CONTRIBUTING.md)** - Development guidelines
 3. **[Submit PR](https://github.com/uldyssian-sh/vsphere8-stig-auditor/pulls)** - Pull request with tests
-4. **[Code Review](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki/Contributing#review)** - Peer review process
+4. **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
 
 ## 📄 License
 

@@ -1,0 +1,88 @@
+name: Enhanced CI/CD Pipeline
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  schedule:
+    - cron: '0 2 * * 1'
+
+permissions:
+  contents: read
+  security-events: write
+  actions: read
+
+jobs:
+  security-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run CodeQL Analysis
+        uses: github/codeql-action/init@v3
+        with:
+          languages: javascript
+      - uses: github/codeql-action/analyze@v3
+
+  powershell-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install PowerShell
+        run: |
+          wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
+          sudo dpkg -i packages-microsoft-prod.deb
+          sudo apt-get update
+          sudo apt-get install -y powershell
+      - name: PSScriptAnalyzer
+        run: |
+          pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser"
+          pwsh -Command "Invoke-ScriptAnalyzer -Path ./vsphere8-stig-auditor.ps1 -Recurse -ReportSummary"
+
+  markdown-lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: DavidAnson/markdownlint-cli2-action@v16
+        with:
+          globs: '**/*.md'
+
+  dependency-check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run npm audit
+        run: |
+          npm audit --audit-level moderate
+          npm outdated || true
+
+  validate-workflows:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate GitHub Actions
+        run: |
+          echo "Validating workflow syntax..."
+          find .github/workflows -name "*.yml" -o -name "*.yaml" | while read file; do
+            echo "Checking $file"
+            python -c "import yaml; yaml.safe_load(open('$file'))"
+          done
+
+  test-powershell-syntax:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test PowerShell Syntax
+        run: |
+          Get-ChildItem -Path . -Filter "*.ps1" -Recurse | ForEach-Object {
+            Write-Host "Testing syntax: $($_.Name)"
+            $null = [System.Management.Automation.PSParser]::Tokenize((Get-Content $_.FullName -Raw), [ref]$null)
+          }
+        shell: powershell
+
+  all-checks:
+    needs: [security-scan, powershell-lint, markdown-lint, dependency-check, validate-workflows, test-powershell-syntax]
+    runs-on: ubuntu-latest
+    steps:
+      - name: All checks passed
+        run: echo "✅ All CI checks completed successfully"

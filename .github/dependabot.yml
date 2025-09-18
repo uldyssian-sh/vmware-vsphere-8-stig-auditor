@@ -21,8 +21,13 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
     ignore:
-      - dependency-name: "*"
+      - dependency-name: "eslint"
+        update-types: ["version-update:semver-major"]
+      - dependency-name: "prettier"
         update-types: ["version-update:semver-major"]
     
   - package-ecosystem: "pip"
@@ -35,9 +40,9 @@ updates:
     commit-message:
       prefix: "chore"
       include: "scope"
-    ignore:
-      - dependency-name: "*"
-        update-types: ["version-update:semver-major"]
+    allow:
+      - dependency-type: "direct"
+        update-type: "security"
     
   - package-ecosystem: "docker"
     directory: "/"

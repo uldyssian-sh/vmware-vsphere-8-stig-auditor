@@ -1,18 +1,20 @@
 {
-  "name": "vsphere8-stig-auditor",
+  "name": "@uldyssian-sh/vsphere8-stig-auditor",
   "version": "1.0.0",
-  "description": "Enterprise automation and management solution",
+  "description": "DoD STIG automated compliance validation and remediation for vSphere 8",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"No tests specified\" && exit 0",
-    "lint": "echo \"No linting configured\" && exit 0",
-    "build": "echo \"No build process\" && exit 0"
+    "test": "pwsh -Command \"Invoke-Pester ./tests/ -OutputFormat NUnitXml -OutputFile TestResults.xml\"",
+    "lint": "pwsh -Command \"Invoke-ScriptAnalyzer -Path ./vsphere8-stig-auditor.ps1 -Recurse\"",
+    "build": "echo \"PowerShell module - no build required\"",
+    "audit": "pwsh -File ./vsphere8-stig-auditor.ps1 -VCenter localhost -SkipVCenterChecks",
+    "validate": "pwsh -Command \"Test-Path ./vsphere8-stig-auditor.ps1\""
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/uldyssian-sh/vsphere8-stig-auditor.git"
   },
-  "keywords": ["automation", "enterprise", "infrastructure"],
+  "keywords": ["vsphere", "stig", "compliance", "security", "audit", "dod", "vmware", "powershell", "automation"],
   "author": "uldyssian-sh",
   "license": "MIT",
   "bugs": {

@@ -46,7 +46,7 @@ $vCenters | ForEach-Object -ThrottleLimit $MaxConcurrent -Parallel {
         $password = Read-Host "Enter password for $username at $vCenter" -AsSecureString
         
         # Run audit
-        $results = & "$using:PSScriptRoot\..\vsphere8-stig-auditor.ps1" -VCenter $vCenter -Username $username -Password $password
+        $results = & "$using:PSScriptRoot\..\vmware-vsphere-8-stig-auditor.ps1" -VCenter $vCenter -Username $username -Password $password
         
         # Add environment info to results
         $results | ForEach-Object {

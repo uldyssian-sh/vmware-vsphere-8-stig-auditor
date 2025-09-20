@@ -1,6 +1,6 @@
-# Contributing to vSphere 8 STIG Auditor
+# Contributing to VMware vSphere 8 STIG Auditor
 
-Thank you for your interest in contributing to the vSphere 8 STIG Auditor! This document provides guidelines for contributing to this project.
+Thank you for your interest in contributing to the VMware vSphere 8 STIG Auditor! This document provides guidelines for contributing to this project.
 
 ## Code of Conduct
 
@@ -72,7 +72,7 @@ Update the following files:
 - Add remediation examples
 
 ### 4. Add Tests
-Create tests in `tests/vsphere8-stig-auditor.Tests.ps1`:
+Create tests in `tests/vmware-vsphere-8-stig-auditor.Tests.ps1`:
 
 ```powershell
 It 'Should check new control (ESXI-80-XXXXXX)' {
@@ -89,7 +89,7 @@ It 'Should check new control (ESXI-80-XXXXXX)' {
 Invoke-Pester -Path tests -Output Detailed
 
 # Run specific test file
-Invoke-Pester -Path tests/vsphere8-stig-auditor.Tests.ps1
+Invoke-Pester -Path tests/vmware-vsphere-8-stig-auditor.Tests.ps1
 ```
 
 ### Code Quality

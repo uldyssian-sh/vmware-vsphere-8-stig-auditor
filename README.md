@@ -1,10 +1,10 @@
-# vSphere 8 STIG Auditor
+# VMware vSphere 8 STIG Auditor
 
 <div align="center">
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                    vSphere 8 STIG Auditor                  │
+│               VMware vSphere 8 STIG Auditor               │
 ├─────────────────────────────────────────────────────────────┤
 │  ┌─────────────┐    ┌─────────────┐    ┌─────────────┐     │
 │  │   vCenter   │────│ STIG Checks │────│   Reports   │     │
@@ -18,8 +18,8 @@
 └─────────────────────────────────────────────────────────────┘
 ```
 
-[![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
-[![Security](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/Security/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
+[![CI](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/actions)
+[![Security](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/workflows/Security/badge.svg)](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/actions)
 [![STIG](https://img.shields.io/badge/STIG-Compliant-green.svg)](https://public.cyber.mil/stigs/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
@@ -48,7 +48,7 @@ Install-Module -Name VMware.PowerCLI -Force
 Connect-VIServer -Server vcenter.domain.com
 
 # Run STIG audit
-.\vsphere8-stig-auditor.ps1 -VCenter "vcenter.domain.com"
+.\vmware-vsphere-8-stig-auditor.ps1 -VCenter "vcenter.domain.com"
 
 # Review results
 Get-Content .\audit-results.txt
@@ -81,18 +81,18 @@ Get-Content .\audit-results.txt
 
 ## 🤝 Contributing
 
-1. **[Fork Repository](https://github.com/uldyssian-sh/vsphere8-stig-auditor/fork)** - Create your fork
+1. **[Fork Repository](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/fork)** - Create your fork
 2. **[Contributing Guide](CONTRIBUTING.md)** - Development guidelines
-3. **[Submit PR](https://github.com/uldyssian-sh/vsphere8-stig-auditor/pulls)** - Pull request with tests
+3. **[Submit PR](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/pulls)** - Pull request with tests
 4. **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the **[LICENSE](https://github.com/uldyssian-sh/vsphere8-stig-auditor/blob/main/LICENSE)** file for details.
+This project is licensed under the MIT License - see the **[LICENSE](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/blob/main/LICENSE)** file for details.
 
 ## 🆘 Support
 
-- **[GitHub Issues](https://github.com/uldyssian-sh/vsphere8-stig-auditor/issues)** - Bug reports and feature requests
-- **[Discussions](https://github.com/uldyssian-sh/vsphere8-stig-auditor/discussions)** - Community support and Q&A
-- **[Wiki](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki)** - Comprehensive documentation
-- **[Security Policy](https://github.com/uldyssian-sh/vsphere8-stig-auditor/security/policy)** - Vulnerability reporting
+- **[GitHub Issues](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/discussions)** - Community support and Q&A
+- **[Wiki](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/wiki)** - Comprehensive documentation
+- **[Security Policy](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/security/policy)** - Vulnerability reporting

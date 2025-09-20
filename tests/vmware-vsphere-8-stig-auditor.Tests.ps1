@@ -1,9 +1,9 @@
 BeforeAll {
-    $scriptPath = Join-Path $PSScriptRoot '..' 'vsphere8-stig-auditor.ps1'
+    $scriptPath = Join-Path $PSScriptRoot '..' 'vmware-vsphere-8-stig-auditor.ps1'
     $script = Get-Content $scriptPath -Raw
 }
 
-Describe 'vSphere 8 STIG Auditor' {
+Describe 'VMware vSphere 8 STIG Auditor' {
     Context 'Script Structure' {
         It 'Should have proper PowerShell syntax' {
             { [scriptblock]::Create($script) } | Should -Not -Throw

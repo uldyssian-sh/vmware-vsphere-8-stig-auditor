@@ -35,7 +35,7 @@ try {
     
     # Run audit
     Write-Host "Executing STIG compliance audit..." -ForegroundColor Cyan
-    $auditScript = Join-Path $PSScriptRoot ".." "vsphere8-stig-auditor.ps1"
+    $auditScript = Join-Path $PSScriptRoot ".." "vmware-vsphere-8-stig-auditor.ps1"
     
     # Capture both output and results
     $results = & $auditScript -VCenter $VCenter -Username $username -Password $password

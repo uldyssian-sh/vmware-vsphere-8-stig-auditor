@@ -21,7 +21,7 @@ $reportName = "STIG-Compliance-$timestamp"
 
 # Capture audit results
 Write-Host "Running STIG compliance audit..." -ForegroundColor Green
-$auditResults = & "$PSScriptRoot\..\vsphere8-stig-auditor.ps1" -VCenter $VCenter
+$auditResults = & "$PSScriptRoot\..\vmware-vsphere-8-stig-auditor.ps1" -VCenter $VCenter
 
 # Generate CSV report
 $csvPath = Join-Path $ReportPath "$reportName.csv"

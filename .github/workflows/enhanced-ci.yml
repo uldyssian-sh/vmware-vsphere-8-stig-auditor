@@ -35,7 +35,7 @@ jobs:
       - name: PSScriptAnalyzer
         run: |
           pwsh -Command "Install-Module -Name PSScriptAnalyzer -Force -Scope CurrentUser"
-          pwsh -Command "Invoke-ScriptAnalyzer -Path ./vsphere8-stig-auditor.ps1 -Recurse -ReportSummary"
+          pwsh -Command "Invoke-ScriptAnalyzer -Path ./vmware-vsphere-8-stig-auditor.ps1 -Recurse -ReportSummary"
 
   markdown-lint:
     runs-on: ubuntu-latest

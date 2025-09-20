@@ -16,7 +16,7 @@ A clear and concise description of what the bug is.
 - **Operating System**: [e.g. Windows 11, Ubuntu 22.04]
 
 ## Steps to Reproduce
-1. Run command: `.\vsphere8-stig-auditor.ps1 -VCenter "..."`
+1. Run command: `.\vmware-vsphere-8-stig-auditor.ps1 -VCenter "..."`
 2. Observe error at step X
 3. See error message
 

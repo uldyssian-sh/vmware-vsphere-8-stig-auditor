@@ -19,7 +19,7 @@
 ```
 
 [![CI](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/CI/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
-[![Security](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/Security/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/security)
+[![Security](https://github.com/uldyssian-sh/vsphere8-stig-auditor/workflows/Security/badge.svg)](https://github.com/uldyssian-sh/vsphere8-stig-auditor/actions)
 [![STIG](https://img.shields.io/badge/STIG-Compliant-green.svg)](https://public.cyber.mil/stigs/)
 [![License](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 

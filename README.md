@@ -96,3 +96,12 @@ This project is licensed under the MIT License - see the **[LICENSE](https://git
 - **[Discussions](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/discussions)** - Community support and Q&A
 - **[Wiki](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/wiki)** - Comprehensive documentation
 - **[Security Policy](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/security/policy)** - Vulnerability reporting
+## Support
+
+- **Issues**: [GitHub Issues](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/issues)
+- **Security**: [Security Policy](SECURITY.md)
+- **Contributing**: [Contributing Guidelines](CONTRIBUTING.md)
+
+---
+
+**⭐ Star this repository if you find it helpful!**

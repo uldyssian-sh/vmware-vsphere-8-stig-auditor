@@ -18,14 +18,14 @@ jobs:
   security-scan:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Security scan placeholder
         run: echo "Security scan completed"
 
   powershell-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Install PowerShell
         run: |
           wget -q https://packages.microsoft.com/config/ubuntu/20.04/packages-microsoft-prod.deb
@@ -40,7 +40,7 @@ jobs:
   markdown-lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - uses: DavidAnson/markdownlint-cli2-action@v16
         with:
           globs: '**/*.md'
@@ -48,7 +48,7 @@ jobs:
   dependency-check:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Run npm audit
         run: |
           npm audit --audit-level moderate
@@ -57,7 +57,7 @@ jobs:
   validate-workflows:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Validate GitHub Actions
         run: |
           echo "Validating workflow syntax..."
@@ -69,7 +69,7 @@ jobs:
   test-powershell-syntax:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Test PowerShell Syntax
         run: |
           Get-ChildItem -Path . -Filter "*.ps1" -Recurse | ForEach-Object {

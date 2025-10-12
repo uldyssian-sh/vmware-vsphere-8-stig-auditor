@@ -2,12 +2,9 @@ name: Enhanced CI/CD Pipeline
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
-    branches: [main]
-  schedule:
-    - cron: '0 2 * * 1'
-  workflow_dispatch:
+    branches: [main, master]
 
 permissions:
   contents: read

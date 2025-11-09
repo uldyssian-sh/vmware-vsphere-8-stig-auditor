@@ -141,4 +141,4 @@ Detailed report: $detailFile
 }
 
 # Example Windows Task Scheduler command:
-# schtasks /create /tn "vSphere STIG Audit" /tr "powershell.exe -File C:\Scripts\scheduled-audit.ps1 -VCenter vcenter.company.com" /sc daily /st 06:00
+# schtasks /create /tn "vSphere STIG Audit" /tr "powershell.exe -File C:\Scripts\scheduled-audit.ps1 -VCenter vcenter.company.com" /sc daily /st 06:00# Updated Sun Nov  9 12:52:08 CET 2025

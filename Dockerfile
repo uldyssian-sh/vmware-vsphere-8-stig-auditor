@@ -31,3 +31,4 @@ RUN echo '#!/usr/bin/pwsh' > /app/entrypoint.ps1 && \
 
 # Default command
 ENTRYPOINT ["/app/entrypoint.ps1"]# Updated 20251109_123845
+# Updated Sun Nov  9 12:52:08 CET 2025

@@ -170,4 +170,4 @@ $html | Out-File -FilePath $dashboardPath -Encoding UTF8
 
 Write-Host "`nBulk audit completed!" -ForegroundColor Green
 Write-Host "Consolidated results: $consolidatedFile" -ForegroundColor Cyan
-Write-Host "Dashboard: $dashboardPath" -ForegroundColor Cyan
+Write-Host "Dashboard: $dashboardPath" -ForegroundColor Cyan# Updated Sun Nov  9 12:52:08 CET 2025

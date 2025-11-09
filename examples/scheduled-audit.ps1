@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Scheduled STIG Audit with Windows Task Scheduler Integration
 # Run daily compliance checks and maintain audit history
 

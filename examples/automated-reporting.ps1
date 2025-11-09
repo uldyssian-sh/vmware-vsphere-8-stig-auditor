@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Automated STIG Compliance Reporting Example
 # Generates HTML and CSV reports with email notifications
 

@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 BeforeAll {
     $scriptPath = Join-Path $PSScriptRoot '..' 'vsphere8-stig-auditor.ps1'
     $script = Get-Content $scriptPath -Raw

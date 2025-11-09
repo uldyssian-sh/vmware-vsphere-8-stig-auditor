@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 # Bulk STIG Audit for Multiple vCenter Servers
 # Audits multiple vCenter environments and consolidates results
 

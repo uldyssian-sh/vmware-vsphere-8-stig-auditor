@@ -1,3 +1,4 @@
+$ErrorActionPreference = "Stop"
 ﻿<#
   vSphere 8 STIG Read-Only Auditor (Console Only, with DISA STIG IDs)
   -------------------------------------------------------------------

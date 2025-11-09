@@ -30,4 +30,3 @@ RUN echo '#!/usr/bin/pwsh' > /app/entrypoint.ps1 && \
     chmod +x /app/entrypoint.ps1
 
 # Default command
-ENTRYPOINT ["/app/entrypoint.ps1"]# Updated 20251109_123845

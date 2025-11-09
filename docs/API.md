@@ -8,4 +8,3 @@
 - Get-vSphere8STIGCompliance
 - Start-STIGRemediation
 - Export-STIGReport
-# Updated 20251109_123845

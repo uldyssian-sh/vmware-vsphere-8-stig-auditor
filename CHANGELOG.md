@@ -50,4 +50,3 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Flexible authentication options
 - Detailed compliance reporting
 - Error handling and graceful failures
-- Support for multiple ESXi hosts per vCenter# Updated 20251109_123845

@@ -10,4 +10,3 @@
 2. Install PowerCLI dependencies
 3. Configure vCenter credentials
 4. Run STIG compliance checks
-# Updated 20251109_123845

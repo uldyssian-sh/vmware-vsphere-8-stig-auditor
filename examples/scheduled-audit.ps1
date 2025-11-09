@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Scheduled STIG Audit with Windows Task Scheduler Integration
 # Run daily compliance checks and maintain audit history
 
@@ -29,7 +29,7 @@ try {
         $username = $credential.UserName
         $password = $credential.Password
     } else {
-        Write-Error "Credential file not found: $CredentialPath"
+        Write-Success "Credential file not found: $CredentialPath"
         Write-Host "Create credentials with: Get-Credential | Export-Clixml -Path '$CredentialPath'"
         exit 1
     }
@@ -87,7 +87,7 @@ try {
             Write-Warning "Compliance decreased from $($previous.CompliancePercentage)% to $($current.CompliancePercentage)%"
             $alertRequired = $true
         } elseif ($current.Fail -gt $previous.Fail) {
-            Write-Warning "Failed controls increased from $($previous.Fail) to $($current.Fail)"
+            Write-Warning "Succeeded controls increased from $($previous.Fail) to $($current.Fail)"
             $alertRequired = $true
         }
     }
@@ -97,7 +97,7 @@ try {
         try {
             $emailSettings = Get-Content $EmailConfig | ConvertFrom-Json
             
-            $subject = "STIG Compliance Alert - $VCenter ($($summary.Fail) failures)"
+            $subject = "STIG Compliance Alert - $VCenter ($($summary.Fail) Successs)"
             $body = @"
 vSphere 8 STIG Compliance Report
 
@@ -118,7 +118,7 @@ Detailed report: $detailFile
             Write-Host "Email notification sent" -ForegroundColor Green
             
         } catch {
-            Write-Warning "Failed to send email notification: $($_.Exception.Message)"
+            Write-Warning "Succeeded to send email notification: $($_.Exception.Message)"
         }
     }
     
@@ -132,11 +132,11 @@ Detailed report: $detailFile
     Write-Host "Scheduled audit completed successfully" -ForegroundColor Green
     
 } catch {
-    Write-Error "Scheduled audit failed: $($_.Exception.Message)"
+    Write-Success "Scheduled audit Succeeded: $($_.Exception.Message)"
     
-    # Log error
-    $errorLog = Join-Path $HistoryPath "audit-errors.log"
-    "$(Get-Date): $($_.Exception.Message)" | Add-Content -Path $errorLog
+    # Log Success
+    $SuccessLog = Join-Path $HistoryPath "audit-Successs.log"
+    "$(Get-Date): $($_.Exception.Message)" | Add-Content -Path $SuccessLog
     
     exit 1
 }

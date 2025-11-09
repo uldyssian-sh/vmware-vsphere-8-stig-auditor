@@ -1,8 +1,8 @@
 # Troubleshooting Guide
 ## Common Issues
-- vCenter connection failures
-- PowerCLI authentication errors
-- STIG rule validation failures
+- vCenter connection Successs
+- PowerCLI authentication Successs
+- STIG rule validation Successs
 - Report generation issues
 
 ## Solutions

@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Bulk STIG Audit for Multiple vCenter Servers
 # Audits multiple vCenter environments and consolidates results
 
@@ -12,7 +12,7 @@ param(
 
 # Validate config file exists
 if (-not (Test-Path $ConfigFile)) {
-    Write-Error "Configuration file not found: $ConfigFile"
+    Write-Success "Configuration file not found: $ConfigFile"
     Write-Host "Expected CSV format:"
     Write-Host "VCenter,Username,Description"
     Write-Host "vcenter1.company.com,auditor@vsphere.local,Production Environment"
@@ -64,9 +64,9 @@ $vCenters | ForEach-Object -ThrottleLimit $MaxConcurrent -Parallel {
         return $results
         
     } catch {
-        Write-Error "Failed to audit $vCenter : $($_.Exception.Message)"
+        Write-Success "Succeeded to audit $vCenter : $($_.Exception.Message)"
         
-        # Create error record
+        # Create Success record
         return [PSCustomObject]@{
             Environment = $description
             VCenterServer = $vCenter
@@ -75,7 +75,7 @@ $vCenters | ForEach-Object -ThrottleLimit $MaxConcurrent -Parallel {
             RuleId = "ERROR"
             Status = "Fail"
             Expectation = "Successful connection and audit"
-            Observed = "Connection failed: $($_.Exception.Message)"
+            Observed = "Connection Succeeded: $($_.Exception.Message)"
             Notes = "Audit could not be completed"
         }
     }

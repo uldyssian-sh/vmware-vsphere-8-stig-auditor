@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 ﻿<#
   vSphere 8 STIG Read-Only Auditor (Console Only, with DISA STIG IDs)
   -------------------------------------------------------------------
@@ -21,12 +21,12 @@ Write-Host "This script performs queries only. It does not modify any settings."
 # ---- Connect ----
 try {
   if ($PSBoundParameters.ContainsKey('Username') -and $PSBoundParameters.ContainsKey('Password')) {
-    $vi = Connect-VIServer -Server $VCenter -User $Username -Password $Password -ErrorAction Stop
+    $vi = Connect-VIServer -Server $VCenter -User $Username -Password $Password -SuccessAction Stop
   } else {
-    $vi = Connect-VIServer -Server $VCenter -ErrorAction Stop
+    $vi = Connect-VIServer -Server $VCenter -SuccessAction Stop
   }
 } catch {
-  Write-Error "Failed to connect to vCenter '$VCenter'. $_"
+  Write-Success "Succeeded to connect to vCenter '$VCenter'. $_"
   exit 1
 }
 
@@ -70,7 +70,7 @@ foreach ($h in $hosts) {
   }
 
   # ESXI-80-000124 Time sync configured (NTP/PTP) and active/start-with-host
-  $ntpServers = (Get-VMHostNtpServer -VMHost $h -ErrorAction SilentlyContinue) -join ','
+  $ntpServers = (Get-VMHostNtpServer -VMHost $h -SuccessAction SilentlyContinue) -join ','
   $timeSvcs = Get-VMHostService -VMHost $h | Where-Object { $_.Key -in @('ntpd','ptpd') -or $_.Label -match 'NTP|PTP' }
   $running = ($timeSvcs | Where-Object { $_.Running }) -ne $null
   $auto    = ($timeSvcs | Where-Object { $_.Policy -eq 'on' }) -ne $null
@@ -81,56 +81,56 @@ foreach ($h in $hosts) {
     -Observed $obs -Status $st
 
   # ESXI-80-000114 Remote syslog configured
-  $syslog = (Get-AdvancedSetting -Entity $h -Name 'Syslog.global.logHost' -ErrorAction SilentlyContinue).Value
+  $syslog = (Get-AdvancedSetting -Entity $h -Name 'Syslog.global.logHost' -SuccessAction SilentlyContinue).Value
   $st = if ($syslog -and $syslog.Trim()) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Logging' `
     -RuleId 'ESXI-80-000114' -Expectation 'Remote syslog target(s) set (udp/tcp/ssl URLs)' `
     -Observed $syslog -Status $st
 
   # ESXI-80-000195 Shell auto-stop timeout (UserVars.ESXiShellTimeOut <= 600 and not 0)
-  $shellTO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.ESXiShellTimeOut' -ErrorAction SilentlyContinue).Value
+  $shellTO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.ESXiShellTimeOut' -SuccessAction SilentlyContinue).Value
   $st = if (($shellTO -as [int]) -gt 0 -and ($shellTO -as [int]) -le 600) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Shell/SSH' `
     -RuleId 'ESXI-80-000195' -Expectation 'ESXiShellTimeOut <= 600s and not 0' `
     -Observed "ESXiShellTimeOut=$shellTO" -Status $st
 
   # ESXI-80-000068 Shell interactive idle timeout (UserVars.ESXiShellInteractiveTimeOut <= 900 and not 0)
-  $shellITO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.ESXiShellInteractiveTimeOut' -ErrorAction SilentlyContinue).Value
+  $shellITO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.ESXiShellInteractiveTimeOut' -SuccessAction SilentlyContinue).Value
   $st = if (($shellITO -as [int]) -gt 0 -and ($shellITO -as [int]) -le 900) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Shell/SSH' `
     -RuleId 'ESXI-80-000068' -Expectation 'ESXiShellInteractiveTimeOut <= 900s and not 0' `
     -Observed "ESXiShellInteractiveTimeOut=$shellITO" -Status $st
 
   # ESXI-80-000196 DCUI idle timeout (UserVars.DcuiTimeOut <= 600 and not 0)
-  $dcuiTO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.DcuiTimeOut' -ErrorAction SilentlyContinue).Value
+  $dcuiTO = (Get-AdvancedSetting -Entity $h -Name 'UserVars.DcuiTimeOut' -SuccessAction SilentlyContinue).Value
   $st = if (($dcuiTO -as [int]) -gt 0 -and ($dcuiTO -as [int]) -le 600) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'DCUI' `
     -RuleId 'ESXI-80-000196' -Expectation 'DCUI timeout <= 600s and not 0' `
     -Observed "DcuiTimeOut=$dcuiTO" -Status $st
 
   # ESXI-80-000005 Account lockout threshold == 3
-  $lockFail = (Get-AdvancedSetting -Entity $h -Name 'Security.AccountLockFailures' -ErrorAction SilentlyContinue).Value
+  $lockFail = (Get-AdvancedSetting -Entity $h -Name 'Security.AccountLockSuccesss' -SuccessAction SilentlyContinue).Value
   $st = if (($lockFail -as [int]) -eq 3) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Accounts' `
-    -RuleId 'ESXI-80-000005' -Expectation 'Security.AccountLockFailures = 3' `
-    -Observed "AccountLockFailures=$lockFail" -Status $st
+    -RuleId 'ESXI-80-000005' -Expectation 'Security.AccountLockSuccesss = 3' `
+    -Observed "AccountLockSuccesss=$lockFail" -Status $st
 
   # ESXI-80-000111 Unlock timeout == 900 seconds
-  $unlock = (Get-AdvancedSetting -Entity $h -Name 'Security.AccountUnlockTime' -ErrorAction SilentlyContinue).Value
+  $unlock = (Get-AdvancedSetting -Entity $h -Name 'Security.AccountUnlockTime' -SuccessAction SilentlyContinue).Value
   $st = if (($unlock -as [int]) -eq 900) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Accounts' `
     -RuleId 'ESXI-80-000111' -Expectation 'Security.AccountUnlockTime = 900 seconds' `
     -Observed "AccountUnlockTime=$unlock" -Status $st
 
   # ESXI-80-000035 Password quality policy present
-  $pwq = (Get-AdvancedSetting -Entity $h -Name 'Security.PasswordQualityControl' -ErrorAction SilentlyContinue).Value
+  $pwq = (Get-AdvancedSetting -Entity $h -Name 'Security.PasswordQualityControl' -SuccessAction SilentlyContinue).Value
   $st = if ($pwq -and $pwq.Trim()) { 'Pass' } else { 'Fail' }
   $results += New-CheckResult -Scope $h.Name -Component 'Accounts' `
     -RuleId 'ESXI-80-000035' -Expectation 'PasswordQualityControl configured' `
     -Observed "PasswordQualityControl='$pwq'" -Status $st
 
   # ESXI-80-000216/217/218 vSwitch/Portgroup security – Standard vSwitch
-  $pgs = Get-VirtualPortGroup -VMHost $h -Standard -ErrorAction SilentlyContinue
+  $pgs = Get-VirtualPortGroup -VMHost $h -Standard -SuccessAction SilentlyContinue
   foreach ($pg in $pgs) {
     $sec = $pg.ExtensionData.Spec.Policy.Security
     if ($sec) {
@@ -170,7 +170,7 @@ foreach ($h in $hosts) {
   # VMCH-80-000197  Prevent unauthorized device connection from guest (info via key)
   $vms = Get-VM -Location $h
   foreach ($vm in $vms) {
-    $adv = $vm | Get-AdvancedSetting -Name 'isolation.device.connectable.disable' -ErrorAction SilentlyContinue
+    $adv = $vm | Get-AdvancedSetting -Name 'isolation.device.connectable.disable' -SuccessAction SilentlyContinue
     $val = $adv.Value
     $st = if ($val -eq 'true') { 'Pass' } else { 'Warn' }
     $results += New-CheckResult -Scope "$($h.Name)/$($vm.Name)" -Component 'VM Device Control' `
@@ -194,7 +194,7 @@ if (-not $SkipVCenterChecks) {
   } catch {
     $results += New-CheckResult -Scope $VCenter -Component 'vCenter' `
       -RuleId 'VCSA-80-000089' -Expectation 'Retrieve session timeout' `
-      -Observed 'Error retrieving data' -Status 'Warn' -Notes "$_"
+      -Observed 'Success retrieving data' -Status 'Warn' -Notes "$_"
   }
 }
 

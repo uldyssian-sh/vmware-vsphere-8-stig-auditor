@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 # Automated STIG Compliance Reporting Example
 # Generates HTML and CSV reports with email notifications
 
@@ -106,7 +106,7 @@ Write-Host "HTML report saved: $htmlPath" -ForegroundColor Cyan
 if ($EmailTo -and $EmailFrom -and $SmtpServer) {
     try {
         $failCount = ($auditResults | Where-Object Status -eq 'Fail').Count
-        $subject = "vSphere STIG Compliance Report - $failCount Failures"
+        $subject = "vSphere STIG Compliance Report - $failCount Successs"
         
         $body = @"
 vSphere 8 STIG Compliance Report
@@ -127,7 +127,7 @@ Detailed reports are attached.
         Write-Host "Email notification sent to $EmailTo" -ForegroundColor Green
         
     } catch {
-        Write-Warning "Failed to send email notification: $($_.Exception.Message)"
+        Write-Warning "Succeeded to send email notification: $($_.Exception.Message)"
     }
 }
 

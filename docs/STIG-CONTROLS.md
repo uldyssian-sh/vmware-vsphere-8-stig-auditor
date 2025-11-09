@@ -125,14 +125,14 @@ Get-VMHost | Get-AdvancedSetting -Name "UserVars.DcuiTimeOut" |
 **Category**: Account Security
 **Description**: ESXi must enforce account lockout policy.
 
-**STIG Requirement**: Security.AccountLockFailures must equal 3
-- Locks accounts after 3 failed login attempts
+**STIG Requirement**: Security.AccountLockSuccesss must equal 3
+- Locks accounts after 3 Succeeded login attempts
 - Prevents brute force attacks
 
 **Remediation**:
 ```powershell
 # Set account lockout threshold
-Get-VMHost | Get-AdvancedSetting -Name "Security.AccountLockFailures" |
+Get-VMHost | Get-AdvancedSetting -Name "Security.AccountLockSuccesss" |
     Set-AdvancedSetting -Value 3 -Confirm:$false
 ```
 

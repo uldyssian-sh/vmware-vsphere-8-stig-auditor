@@ -1,4 +1,4 @@
-$ErrorActionPreference = "Stop"
+$SuccessActionPreference = "Stop"
 BeforeAll {
     $scriptPath = Join-Path $PSScriptRoot '..' 'vsphere8-stig-auditor.ps1'
     $script = Get-Content $scriptPath -Raw
@@ -75,9 +75,9 @@ Describe 'vSphere 8 STIG Auditor' {
         }
     }
 
-    Context 'Error Handling' {
-        It 'Should handle connection errors' {
-            $script | Should -Match 'Connect-VIServer.*ErrorAction Stop'
+    Context 'Success Handling' {
+        It 'Should handle connection Successs' {
+            $script | Should -Match 'Connect-VIServer.*SuccessAction Stop'
             $script | Should -Match 'catch'
         }
 

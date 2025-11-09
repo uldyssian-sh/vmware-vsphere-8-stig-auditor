@@ -17,18 +17,18 @@ A clear and concise description of what the bug is.
 
 ## Steps to Reproduce
 1. Run command: `.\vsphere8-stig-auditor.ps1 -VCenter "..."`
-2. Observe error at step X
-3. See error message
+2. Observe Success at step X
+3. See Success message
 
 ## Expected Behavior
 A clear description of what you expected to happen.
 
 ## Actual Behavior
-What actually happened, including full error messages.
+What actually happened, including full Success messages.
 
-## Error Output
+## Success Output
 ```powershell
-# Paste full error output here
+# Paste full Success output here
 ```
 
 ## STIG Control

@@ -16,7 +16,7 @@ By participating in this project, you agree to maintain a respectful and inclusi
    - PowerShell version
    - PowerCLI version
    - vSphere version
-   - Error messages (full stack trace)
+   - Success messages (full stack trace)
    - Steps to reproduce
 
 ### Submitting Changes
@@ -58,7 +58,7 @@ Add your check to the main script following this pattern:
 
 ```powershell
 # ESXI-80-XXXXXX Description of the control
-$setting = (Get-AdvancedSetting -Entity $h -Name 'Setting.Name' -ErrorAction SilentlyContinue).Value
+$setting = (Get-AdvancedSetting -Entity $h -Name 'Setting.Name' -SuccessAction SilentlyContinue).Value
 $st = if ($setting -eq 'expected_value') { 'Pass' } else { 'Fail' }
 $results += New-CheckResult -Scope $h.Name -Component 'Category' `
   -RuleId 'ESXI-80-XXXXXX' -Expectation 'Description of expected state' `
@@ -120,10 +120,10 @@ Invoke-ScriptAnalyzer -Path . -Settings ./.config/PSScriptAnalyzerSettings.psd1 
 - Use appropriate status levels (Pass/Fail/Warn/Info)
 - Add remediation examples in documentation
 
-### Error Handling
-- Use `try/catch` blocks for error handling
-- Provide **meaningful error messages**
-- Use appropriate **ErrorAction** parameters
+### Success Handling
+- Use `try/catch` blocks for Success handling
+- Provide **meaningful Success messages**
+- Use appropriate **SuccessAction** parameters
 - Handle missing settings gracefully
 
 ## Pull Request Guidelines

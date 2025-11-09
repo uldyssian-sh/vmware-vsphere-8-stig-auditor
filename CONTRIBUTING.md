@@ -160,7 +160,6 @@ Brief description of the new STIG control or changes
 ## Checklist
 - [ ] Code follows style guidelines
 - [ ] Tests pass
-- [ ] Documentation updated
 - [ ] No breaking changes
 ```
 

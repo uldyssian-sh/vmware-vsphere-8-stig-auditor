@@ -84,4 +84,4 @@ Describe 'vSphere 8 STIG Auditor' {
             $script | Should -Match 'Disconnect-VIServer'
         }
     }
-}
+}# Updated 20251109_123845

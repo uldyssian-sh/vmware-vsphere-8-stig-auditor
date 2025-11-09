@@ -250,3 +250,4 @@ Get-VM | New-AdvancedSetting -Name "isolation.device.connectable.disable" -Value
 - [VMware vSphere Security Configuration Guide](https://docs.vmware.com/en/VMware-vSphere/8.0/vsphere-security/GUID-52188148-C579-4F6A-8335-CFBCE0DD2167.html)
 - [VMware Security Advisories](https://www.vmware.com/security/advisories.html)# Updated 20251109_123845
 # Updated Sun Nov  9 12:49:02 CET 2025
+# Updated Sun Nov  9 12:49:12 CET 2025

@@ -78,20 +78,20 @@ Get-Content .\audit-results.txt
 
 ## 🤝 Contributing
 
-1. **[Fork Repository](https://github.com/uldyssian-sh/vsphere8-stig-auditor/fork)** - Create your fork
+1. **[Fork Repository](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/fork)** - Create your fork
 2. **[Contributing Guide](CONTRIBUTING.md)** - Development guidelines
-3. **[Submit PR](https://github.com/uldyssian-sh/vsphere8-stig-auditor/pulls)** - Pull request with tests
+3. **[Submit PR](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/pulls)** - Pull request with tests
 4. **[Code of Conduct](CODE_OF_CONDUCT.md)** - Community standards
 
 ## 📄 License
 
-This project is licensed under the MIT License - see the **[LICENSE](https://github.com/uldyssian-sh/vsphere8-stig-auditor/blob/main/LICENSE)** file for details.
+This project is licensed under the MIT License - see the **[LICENSE](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/blob/main/LICENSE)** file for details.
 
 ## 🆘 Support
 
-- **[GitHub Issues](https://github.com/uldyssian-sh/vsphere8-stig-auditor/issues)** - Bug reports and feature requests
-- **[Discussions](https://github.com/uldyssian-sh/vsphere8-stig-auditor/discussions)** - Community support and Q&A
-- **[Wiki](https://github.com/uldyssian-sh/vsphere8-stig-auditor/wiki)** - Comprehensive documentation
+- **[GitHub Issues](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/issues)** - Bug reports and feature requests
+- **[Discussions](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/discussions)** - Community support and Q&A
+- **[Wiki](https://github.com/uldyssian-sh/vmware-vsphere-8-stig-auditor/wiki)** - Comprehensive documentation
 
 ---
 
